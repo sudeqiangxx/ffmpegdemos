@@ -1,0 +1,14 @@
+prefix=/Users/deqiangsu/develop/ffmpeg/ffmpeg-3.3.9
+exec_prefix=${prefix}
+libdir=/Users/deqiangsu/develop/ffmpeg/ffmpeg-3.3.9/lib
+includedir=/Users/deqiangsu/develop/ffmpeg/ffmpeg-3.3.9/include
+
+Name: libavformat
+Description: FFmpeg container format library
+Version: 58.20.100
+Requires: 
+Requires.private: libavcodec >= 58.35.100, libswresample >= 3.3.100, libavutil >= 56.22.100
+Conflicts:
+Libs: -L${libdir}  -lavformat 
+Libs.private: -lm -lz
+Cflags: -I${includedir}

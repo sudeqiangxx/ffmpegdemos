@@ -1,0 +1,14 @@
+prefix=/Users/deqiangsu/develop/ffmpeg/ffmpeg-3.3.9
+exec_prefix=${prefix}
+libdir=/Users/deqiangsu/develop/ffmpeg/ffmpeg-3.3.9/lib
+includedir=/Users/deqiangsu/develop/ffmpeg/ffmpeg-3.3.9/include
+
+Name: libavutil
+Description: FFmpeg utility library
+Version: 56.22.100
+Requires: 
+Requires.private: 
+Conflicts:
+Libs: -L${libdir}  -lavutil 
+Libs.private: -pthread -lm
+Cflags: -I${includedir}

@@ -1,0 +1,14 @@
+prefix=/Users/deqiangsu/develop/ffmpeg/ffmpeg-3.3.9
+exec_prefix=${prefix}
+libdir=/Users/deqiangsu/develop/ffmpeg/ffmpeg-3.3.9/lib
+includedir=/Users/deqiangsu/develop/ffmpeg/ffmpeg-3.3.9/include
+
+Name: libavfilter
+Description: FFmpeg audio/video filtering library
+Version: 7.40.101
+Requires: 
+Requires.private: libswscale >= 5.3.100, libavformat >= 58.20.100, libavcodec >= 58.35.100, libswresample >= 3.3.100, libavutil >= 56.22.100
+Conflicts:
+Libs: -L${libdir}  -lavfilter 
+Libs.private: -pthread -lm
+Cflags: -I${includedir}

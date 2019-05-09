@@ -1,0 +1,14 @@
+prefix=/Users/deqiangsu/develop/ffmpeg/ffmpeg-3.3.9
+exec_prefix=${prefix}
+libdir=/Users/deqiangsu/develop/ffmpeg/ffmpeg-3.3.9/lib
+includedir=/Users/deqiangsu/develop/ffmpeg/ffmpeg-3.3.9/include
+
+Name: libswscale
+Description: FFmpeg image rescaling library
+Version: 5.3.100
+Requires: 
+Requires.private: libavutil >= 56.22.100
+Conflicts:
+Libs: -L${libdir}  -lswscale 
+Libs.private: -lm
+Cflags: -I${includedir}

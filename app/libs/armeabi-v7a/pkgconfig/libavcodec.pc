@@ -1,0 +1,14 @@
+prefix=/Users/deqiangsu/develop/ffmpeg/ffmpeg-3.3.9
+exec_prefix=${prefix}
+libdir=/Users/deqiangsu/develop/ffmpeg/ffmpeg-3.3.9/lib
+includedir=/Users/deqiangsu/develop/ffmpeg/ffmpeg-3.3.9/include
+
+Name: libavcodec
+Description: FFmpeg codec library
+Version: 58.35.100
+Requires: 
+Requires.private: libswresample >= 3.3.100, libavutil >= 56.22.100
+Conflicts:
+Libs: -L${libdir}  -lavcodec 
+Libs.private: -pthread -lm -lz
+Cflags: -I${includedir}
