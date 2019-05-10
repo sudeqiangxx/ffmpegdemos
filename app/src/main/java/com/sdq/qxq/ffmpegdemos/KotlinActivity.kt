@@ -63,4 +63,20 @@ class KotlinActivity : AppCompatActivity() {
             println("集合下标：$index 对应的值：${itemList[index]}")
         }
     }
+
+    /**
+     * while 和do...while()
+     */
+    fun testWhile(){
+        var a=10
+        //while 循环
+        while (a>0){
+            a--
+        }
+        var b=8
+        //do...while() 循环
+        do {
+            b--
+        }while (b>0);
+    }
 }
