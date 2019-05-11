@@ -8,6 +8,10 @@ package com.sdq.qxq.ffmpegdemos
  * @version: 1.0
  */
 class KotlinTest(var age: Int?, val dates: Int?) {
+
+    constructor( name:String?, age:Int?, dates:Int?) : this(age,dates) {
+
+    }
     //类体
     //定义属性
     var name:String="zhangshan"

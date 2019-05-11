@@ -9,7 +9,7 @@ class KotlinActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_kotlin)
         //创建一个对象
-        var kt=KotlinTest()
+        var kt=KotlinTest(18,12)
         kt.city="广州"
         kt.name="lenna"
         kt.test()
