@@ -8,6 +8,12 @@ class KotlinActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_kotlin)
+        //创建一个对象
+        var kt=KotlinTest()
+        kt.city="广州"
+        kt.name="lenna"
+        kt.test()
+
     }
 
     //可以单独作为if 判断
