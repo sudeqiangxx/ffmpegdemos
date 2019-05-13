@@ -1,15 +1,25 @@
 package com.sdq.qxq.ffmpegdemos
 
+import android.app.Activity
+import android.content.Intent
 import android.os.AsyncTask.execute
+import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.util.ObjectsCompat
 import android.view.View
+import android.view.Window
+import android.widget.Button
 import com.sdq.qxq.ffmpegdemos.goto
+import kotlinx.android.synthetic.main.activity_kotlin.*
+
 class KotlinActivity : AppCompatActivity() {
     val ui=Ui()+UiOP.Show+UiOP.TranslateX(20f)+UiOP.TranslateY(20f)+UiOP.Hide
+    private lateinit var btnClick:Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_kotlin)
+        btnClick=findViewById(R.id.btn_onclick)
         //创建一个对象
         var kt=KotlinTest(18,12)
         kt.city="广州"
@@ -43,6 +53,17 @@ class KotlinActivity : AppCompatActivity() {
         println(boss.value)
         val bos=Boss(Person("lennasu",25))
 //        bos.sort()
+
+        //枚举类使用
+//        ItemColor.valueOf("blak")
+        btnClick.setOnClickListener(object :View.OnClickListener {
+            override fun onClick(v: View?) {
+                println("点击测试")
+            }
+
+        })
+
+
 
     }
 
@@ -165,4 +186,12 @@ class KotlinActivity : AppCompatActivity() {
             }
         }
     }
+    companion object {
+        fun actionStartActivity(activity: Activity){
+            var intent=Intent(activity,KotlinActivity::class.java)
+            activity.startActivity(intent)
+        }
+    }
 }
+
+
