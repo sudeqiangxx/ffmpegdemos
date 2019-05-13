@@ -2,7 +2,7 @@ package com.sdq.qxq.ffmpegdemos
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-
+import com.sdq.qxq.ffmpegdemos.goto
 class KotlinActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,6 +24,7 @@ class KotlinActivity : AppCompatActivity() {
 
         println("no:${MyClass.no}")
         MyClass.foo()
+        MyClass.Companion.goto()
 
     }
     fun MyClass.Print(){
