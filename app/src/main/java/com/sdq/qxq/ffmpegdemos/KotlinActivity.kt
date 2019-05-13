@@ -1,10 +1,12 @@
 package com.sdq.qxq.ffmpegdemos
 
+import android.os.AsyncTask.execute
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.sdq.qxq.ffmpegdemos.goto
 class KotlinActivity : AppCompatActivity() {
-
+    val ui=Ui()+UiOP.Show+UiOP.TranslateX(20f)+UiOP.TranslateY(20f)+UiOP.Hide
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_kotlin)
@@ -26,7 +28,35 @@ class KotlinActivity : AppCompatActivity() {
         MyClass.foo()
         MyClass.Companion.goto()
 
+        //数据类
+        val user=User(name="lennasu")
+        println(user)
+        val copyUser=user.copy(name="newlennasu")
+        println(copyUser)
+
+
+        //密封类使用
+//        run(,ui)
+
+        //泛型使用
+        val boss:Boss<Person> = Boss(Person("lennasu",25))
+        println(boss.value)
+        val bos=Boss(Person("lennasu",25))
+//        bos.sort()
+
     }
+
+    fun run(view:View,ui:Ui){
+        val it = null
+//        ui.uiOps.forEach(execute(view,it))
+    }
+//    fun execute(view: View, op: UiOP): (UiOP) -> Unit = when (op) {
+//        UiOP.Show -> view.visibility = View.VISIBLE
+//        UiOP.Hide -> view.visibility = View.GONE
+//        is UiOP.TranslateX -> view.translationX = op.px // 这个 when 语句分支不仅告诉 view 要水平移动，还告诉 view 需要移动多少距离，这是枚举等 Java 传统思想不容易实现的
+//        is UiOP.TranslateY -> view.translationY = op.px
+//    }
+
     fun MyClass.Print(){
         print("用户名：$name")
     }
