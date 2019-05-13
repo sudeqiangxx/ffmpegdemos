@@ -8,7 +8,11 @@ package com.sdq.qxq.ffmpegdemos
  * @version: 1.0
  */
 class MyClass :MyInterface {
+    var name:String="小强"
     override fun bar() {
         print("接口实现")
+    }
+    companion object {
+
     }
 }

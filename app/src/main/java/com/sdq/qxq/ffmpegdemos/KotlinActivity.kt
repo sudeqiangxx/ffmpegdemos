@@ -13,7 +13,46 @@ class KotlinActivity : AppCompatActivity() {
         kt.city="广州"
         kt.name="lenna"
         kt.test()
+        var myclas=MyClass()
+        //扩展函数
+        myclas.Print()
+        val l= mutableListOf(1,2,4)
+        l.swap(0,2)
+        println(l.toString())
+        val g= arrayListOf(1,3,5)
+        g.swap(0,2)
 
+        println("no:${MyClass.no}")
+        MyClass.foo()
+
+    }
+    fun MyClass.Print(){
+        print("用户名：$name")
+    }
+    fun MyClass.Companion.foo(){
+        println("伴随对象的扩展函数")
+    }
+    val MyClass.Companion.no:Int
+        get() = 10
+
+    //扩展函数swap，调换不同位置的值
+    fun MutableList<Int>.swap(index1:Int,index2:Int){
+        val tmp=this[index1]
+        this[index1]=this[index2]
+        this[index2]=tmp
+    }
+
+    fun Array<Int>.swap(index1:Int,index2: Int){
+        val tmp=this[index1]
+        this[index1]=this[index2]
+        this[index2]=tmp
+    }
+
+    fun Any?.toString():String{
+        if (this==null) return "null"
+        //空检测之后"this"会自动转换为非空类型，所以下面的toString（）
+        //调用类成员函数
+        return toString()
     }
 
     //可以单独作为if 判断
