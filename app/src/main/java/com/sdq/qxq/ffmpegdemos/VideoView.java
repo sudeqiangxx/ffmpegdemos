@@ -54,5 +54,6 @@ public class VideoView extends SurfaceView {
                 render(inputString, VideoView.this.getHolder().getSurface());
             }
         }.start();
+
     }
 }

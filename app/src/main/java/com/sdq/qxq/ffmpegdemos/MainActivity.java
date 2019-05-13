@@ -1,5 +1,6 @@
 package com.sdq.qxq.ffmpegdemos;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,6 +29,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        findViewById(R.id.goto_image).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,CanvasBitmapActivity.class);
+                startActivity(intent);
+            }
+        });
 
         // Example of a call to a native method
 //        TextView tv = findViewById(R.id.sample_text);
