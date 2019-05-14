@@ -28,3 +28,16 @@ fun main(args:Array<String>){
     println(site.name)
     println(site.age)
 }
+class Xiao{
+    private fun foo()=object {
+        val x:String ="x"
+    }
+    fun foop()=object {
+        val x:String="x"
+    }
+    fun test(){
+        val v1=foo().x
+        //不是匿名类型，所以找不到x
+        val v2=foop().x
+    }
+}
