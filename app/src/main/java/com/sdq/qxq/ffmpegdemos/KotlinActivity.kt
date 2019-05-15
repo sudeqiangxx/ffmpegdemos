@@ -12,6 +12,7 @@ import android.view.Window
 import android.widget.Button
 import com.sdq.qxq.ffmpegdemos.goto
 import kotlinx.android.synthetic.main.activity_kotlin.*
+import kotlin.properties.Delegates
 
 class KotlinActivity : AppCompatActivity() {
     val ui=Ui()+UiOP.Show+UiOP.TranslateX(20f)+UiOP.TranslateY(20f)+UiOP.Hide
@@ -63,8 +64,39 @@ class KotlinActivity : AppCompatActivity() {
 
         })
 
+        val e=Example()
+        println(e.p)
+
+        e.p="Lenna"
+        println(e.p)
+//        Delegates.observable(1,)
 
 
+        val users=UserBean()
+        users.name="第一次赋值"
+        users.name="第二次赋值"
+
+        //旧值：初始值 -> 新值：第一次赋值
+        //旧值：第一次赋值 -> 新值：第二次赋值
+
+        //属性存储映射
+        //构造函数接受一个映射参数
+        val bUser=BeaconUser(mapOf(
+                "name" to "jon",
+                "age" to 39
+        ))
+        //委托属性会从这个映射中取值（通过字符串键--属性的名称）
+        println(bUser.name)
+        println(bUser.age)
+        //也适用于var属性，如果把只读的Map换成MutableMap的化：
+
+
+
+
+    }
+    fun mains(){
+        val b=BaseImpl(10)
+        Derived(b).print()
     }
 
     fun run(view:View,ui:Ui){

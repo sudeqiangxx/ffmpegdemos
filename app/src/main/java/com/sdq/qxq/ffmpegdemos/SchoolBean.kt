@@ -38,6 +38,6 @@ class Xiao{
     fun test(){
         val v1=foo().x
         //不是匿名类型，所以找不到x
-        val v2=foop().x
+//        val v2=foop().x
     }
 }
