@@ -14,4 +14,6 @@ class UserBean {
         prop,old,new ->
         println("旧值$old->新值：$new")
     }
+
+
 }
