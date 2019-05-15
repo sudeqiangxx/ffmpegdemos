@@ -90,5 +90,12 @@ fun newMain()= runBlocking {
 fun newMain1()= runBlocking {
     launch {
 //        doWorld()
+
     }
+}
+
+//挂起函数
+suspend fun doWorld() {
+    delay(1000L)
+    println("World!")
 }
