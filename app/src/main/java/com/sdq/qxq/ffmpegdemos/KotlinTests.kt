@@ -10,7 +10,7 @@ import kotlin.math.log
  * @update: 2019-05-15
  * @version: 1.0
  */
-suspend fun main(args:Array<String>){
+ fun main(args:Array<String>){
 //    GlobalScope.launch {
 //        delay(5000L)
 //        println("World!")
@@ -43,16 +43,18 @@ suspend fun main(args:Array<String>){
 
 //    mas()
 //    newMain()
-    coroutineScope {
-        launch {
-            delay(500L)
-            println("我在coroutineScope中的launch")
-        }
-        delay(100L)
-        println("我在coroutineScope中")
-    }
-    println("hh-----")
+//    coroutineScope {
+//        launch {
+//            delay(500L)
+//            println("我在coroutineScope中的launch")
+//        }
+//        delay(100L)
+//        println("我在coroutineScope中")
+//    }
+//    println("hh-----")
+
 }
+
 
 fun mains()= runBlocking {
     GlobalScope.launch {

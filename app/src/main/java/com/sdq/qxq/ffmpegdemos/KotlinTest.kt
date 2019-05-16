@@ -1,5 +1,9 @@
 package com.sdq.qxq.ffmpegdemos
 
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+
 /**
  * @description:
  * @author: lenna
@@ -35,5 +39,22 @@ class KotlinTest(var age: Int?, val dates: Int?) {
     fun test(){
         print("我是类成员函数test")
         print("我是$name 我在$city")
+    }
+
+
+    fun main()= runBlocking {
+        val job=launch {
+            repeat(1000){
+                i->
+                println("job:I`m sleeping $i")
+                delay(500)
+            }
+
+        }
+        delay(1300L)
+        println("main:I`m tired of waiting")
+        job.cancel()
+        job.join()
+
     }
 }
