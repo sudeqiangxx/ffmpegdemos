@@ -20,7 +20,6 @@ class KotlinActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_kotlin)
-        btnClick=findViewById(R.id.btn_onclick)
         //创建一个对象
         var kt=KotlinTest(18,12)
         kt.city="广州"
@@ -57,7 +56,7 @@ class KotlinActivity : AppCompatActivity() {
 
         //枚举类使用
 //        ItemColor.valueOf("blak")
-        btnClick.setOnClickListener(object :View.OnClickListener {
+        btn_onclick.setOnClickListener(object :View.OnClickListener {
             override fun onClick(v: View?) {
                 println("点击测试")
             }
