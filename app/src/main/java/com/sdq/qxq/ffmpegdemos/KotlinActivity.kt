@@ -56,7 +56,7 @@ class KotlinActivity : AppCompatActivity() {
 
         //枚举类使用
 //        ItemColor.valueOf("blak")
-        btn_onclick.setOnClickListener(object :View.OnClickListener {
+        btnOnclick.setOnClickListener(object :View.OnClickListener {
             override fun onClick(v: View?) {
                 println("点击测试")
             }

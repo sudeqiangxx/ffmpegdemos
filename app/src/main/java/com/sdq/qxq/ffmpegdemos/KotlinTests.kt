@@ -52,6 +52,9 @@ import kotlin.math.log
 //        println("我在coroutineScope中")
 //    }
 //    println("hh-----")
+//    testMain()
+    testFinally()
+
 
 }
 
@@ -100,4 +103,71 @@ fun newMain1()= runBlocking {
 suspend fun doWorld() {
     delay(1000L)
     println("World!")
+}
+
+
+fun testMain(){
+    runBlocking {
+        val startTime=System.currentTimeMillis()
+        val job=launch(Dispatchers.Default){
+            var nextPrintTIme=startTime
+            var i=0
+            while (i<5){
+                if (System.currentTimeMillis()>=nextPrintTIme){
+                    println("job : I`m sleeping ${i++} ...")
+                    nextPrintTIme+=500L
+                }
+            }
+        }
+        delay(1300L)
+        println("main: I`m tired of waiting!")
+        job.cancelAndJoin()
+        println("main:Now I can quit .")
+
+    }
+
+}
+fun testMains(){
+    runBlocking {
+        val startTime=System.currentTimeMillis()
+        val job=launch(Dispatchers.Default){
+            var nextPrintTIme=startTime
+            var i=0
+            while (isActive){
+                if (System.currentTimeMillis()>=nextPrintTIme){
+                    println("job : I`m sleeping ${i++} ...")
+                    nextPrintTIme+=500L
+                }
+            }
+        }
+        delay(1300L)
+        println("main: I`m tired of waiting!")
+        job.cancelAndJoin()
+        println("main:Now I can quit .")
+
+    }
+
+}
+
+fun testFinally(){
+    runBlocking {
+        val job=launch {
+            try {
+                repeat(1000){
+                    i->
+                    println("job: I`m sleeping $i")
+                    delay(500L)
+                }
+            }finally {
+                println("job:I `m running finally")
+            }
+
+        }
+
+        delay(1300L)
+        println("main:I`m tired of waiting!")
+        job.cancelAndJoin()
+        println("main:Now I can quit.")
+    }
+
 }
