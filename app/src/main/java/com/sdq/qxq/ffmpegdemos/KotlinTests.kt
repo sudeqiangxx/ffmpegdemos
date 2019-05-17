@@ -1,7 +1,10 @@
 package com.sdq.qxq.ffmpegdemos
 
 import kotlinx.coroutines.*
+import java.io.File
+import kotlin.math.cos
 import kotlin.math.log
+import kotlin.math.tan
 
 /**
  * @description:
@@ -10,7 +13,7 @@ import kotlin.math.log
  * @update: 2019-05-15
  * @version: 1.0
  */
- fun main(args:Array<String>){
+fun main(args: Array<String>) {
 //    GlobalScope.launch {
 //        delay(5000L)
 //        println("World!")
@@ -55,13 +58,44 @@ import kotlin.math.log
 //    testMain()
 //    testFinally()
 //    testWithTimeOut()
-    testwithTimeoutOrNull()
+//    testwithTimeoutOrNull()
 
+//    println("d=$d")
+//    val fruits= listOf("banana","avocado","apple","kiwifruit")
+//    fruits.filter { it.startsWith("a") }
+//            .sortedBy { it }
+//            .forEach { println(it) }
+//    println("fruits -----$fruits")
+
+//    val p:String by lazy {
+//
+//    }
+//    val files=File("test").listFiles()
+//    println(files?.size)
+//    一般我们用java一不小心就会出现声明null指针，当我们用了kotlin后只要加？就可以避免null指针的出现，不至于导致程序奔溃
+//    println(files?.size?:"empty")
+//    val values = mapOf(1 to "dd")
+//    val email=values["email"]?:throw IllegalStateException("Email is missing!")
+
+    var a = 1
+    var b = 2
+    a = b.also { b = a }
+    println("a=$a")
+    println("b=$b")
+    if (a > b) {
+        println("11111")
+    } else {
+        println("22222")
+    }
 
 }
 
+object Resource {
+    val name = "Name"
+}
 
-fun mains()= runBlocking {
+
+fun mains() = runBlocking {
     GlobalScope.launch {
         delay(2000L)
         println("World!")
@@ -70,7 +104,7 @@ fun mains()= runBlocking {
     delay(3000L)
 }
 
-fun mas()= runBlocking {
+fun mas() = runBlocking {
     launch {
         delay(1000L)
         println("World!")
@@ -78,7 +112,7 @@ fun mas()= runBlocking {
     println("Hello,")
 }
 
-fun newMain()= runBlocking {
+fun newMain() = runBlocking {
     launch {
         delay(200L)
         println("开始执行-----我在launch")
@@ -94,9 +128,9 @@ fun newMain()= runBlocking {
     println("完毕------")
 }
 
-fun newMain1()= runBlocking {
+fun newMain1() = runBlocking {
     launch {
-//        doWorld()
+        //        doWorld()
 
     }
 }
@@ -108,37 +142,16 @@ suspend fun doWorld() {
 }
 
 
-fun testMain(){
+fun testMain() {
     runBlocking {
-        val startTime=System.currentTimeMillis()
-        val job=launch(Dispatchers.Default){
-            var nextPrintTIme=startTime
-            var i=0
-            while (i<5){
-                if (System.currentTimeMillis()>=nextPrintTIme){
+        val startTime = System.currentTimeMillis()
+        val job = launch(Dispatchers.Default) {
+            var nextPrintTIme = startTime
+            var i = 0
+            while (i < 5) {
+                if (System.currentTimeMillis() >= nextPrintTIme) {
                     println("job : I`m sleeping ${i++} ...")
-                    nextPrintTIme+=500L
-                }
-            }
-        }
-        delay(1300L)
-        println("main: I`m tired of waiting!")
-        job.cancelAndJoin()
-        println("main:Now I can quit .")
-
-    }
-
-}
-fun testMains(){
-    runBlocking {
-        val startTime=System.currentTimeMillis()
-        val job=launch(Dispatchers.Default){
-            var nextPrintTIme=startTime
-            var i=0
-            while (isActive){
-                if (System.currentTimeMillis()>=nextPrintTIme){
-                    println("job : I`m sleeping ${i++} ...")
-                    nextPrintTIme+=500L
+                    nextPrintTIme += 500L
                 }
             }
         }
@@ -151,16 +164,37 @@ fun testMains(){
 
 }
 
-fun testFinally(){
+fun testMains() {
     runBlocking {
-        val job=launch {
+        val startTime = System.currentTimeMillis()
+        val job = launch(Dispatchers.Default) {
+            var nextPrintTIme = startTime
+            var i = 0
+            while (isActive) {
+                if (System.currentTimeMillis() >= nextPrintTIme) {
+                    println("job : I`m sleeping ${i++} ...")
+                    nextPrintTIme += 500L
+                }
+            }
+        }
+        delay(1300L)
+        println("main: I`m tired of waiting!")
+        job.cancelAndJoin()
+        println("main:Now I can quit .")
+
+    }
+
+}
+
+fun testFinally() {
+    runBlocking {
+        val job = launch {
             try {
-                repeat(1000){
-                    i->
+                repeat(1000) { i ->
                     println("job: I`m sleeping $i")
                     delay(500L)
                 }
-            }finally {
+            } finally {
                 println("job:I `m running finally")
             }
 
@@ -174,17 +208,17 @@ fun testFinally(){
 
 }
 
-fun testCancell(){
+fun testCancell() {
     runBlocking {
-        val  job=launch {
+        val job = launch {
             try {
-                repeat(1000){
-                    i-> println("job:I`m sleeping $i ...")
+                repeat(1000) { i ->
+                    println("job:I`m sleeping $i ...")
                     delay(500L)
                 }
-            }finally {
+            } finally {
 
-                withContext(NonCancellable){
+                withContext(NonCancellable) {
                     println("job:I`m running finally")
                     delay(1000L)
                     println("job :And I`ve just delayed for 1 sec bacause I`m non-cancellable")
@@ -198,10 +232,11 @@ fun testCancell(){
 
     }
 }
-fun  testWithTimeOut(){
+
+fun testWithTimeOut() {
     runBlocking {
-        withTimeout(1300L){
-            repeat(1000){i->
+        withTimeout(1300L) {
+            repeat(1000) { i ->
                 println("I`m sleeping $i ...")
                 delay(500L)
 
@@ -213,15 +248,15 @@ fun  testWithTimeOut(){
 /**
  * 运行就不抛出异常了
  */
-fun testwithTimeoutOrNull(){
+fun testwithTimeoutOrNull() {
     runBlocking {
-        val result= withTimeoutOrNull(1300L){
-            repeat(1000){i->
+        val result = withTimeoutOrNull(1300L) {
+            repeat(1000) { i ->
                 println("I`m sleeping $i")
                 delay(500L)
 
             }
-        "Done"
+            "Done"
         }
         println("resutl is $result")
 

@@ -12,6 +12,7 @@ import android.view.Window
 import android.widget.Button
 import com.sdq.qxq.ffmpegdemos.goto
 import kotlinx.android.synthetic.main.activity_kotlin.*
+import kotlin.math.cos
 import kotlin.math.max
 import kotlin.properties.Delegates
 
@@ -98,6 +99,7 @@ class KotlinActivity : AppCompatActivity() {
             map.forEach { _, value -> println("$value!") }
         }
         val oneMillion =1_000_000
+        cos(1.2)
 
 
     }
