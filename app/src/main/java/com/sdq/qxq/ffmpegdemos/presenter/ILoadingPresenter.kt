@@ -16,7 +16,7 @@ import java.net.UnknownHostException
  * @update: 2019-05-20
  * @version: 1.0
  */
-abstract class ILoadingPresenter<T : BaseHttpResponse, V : ILoadingView> : BasePresenter<V>() {
+open abstract class ILoadingPresenter<T : BaseHttpResponse, V : ILoadingView> : BasePresenter<V>() {
     var mLoading: Boolean
         get() {
             return mLoading
