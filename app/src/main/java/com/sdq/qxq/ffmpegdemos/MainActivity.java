@@ -9,6 +9,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.io.File;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Proxy;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -71,4 +74,6 @@ public class MainActivity extends AppCompatActivity {
     public native int decode(String inputurl,String outPuturl);
 
     public native void fileLengths(String path,String crypt_path);
+
+    private static final Class<?>[] constructorParams={InvocationHandler.class};
 }
