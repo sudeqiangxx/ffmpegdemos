@@ -9,10 +9,20 @@ import com.sdq.qxq.ffmpegdemos.constans.NetCode
  * @update: 2019-05-20
  * @version: 1.0
  */
-class BaseHttpResponse :IHttpResponse {
-    var httpStatus:Int = 0
-    var code:Int =0
-    var msg:String = ""
+class BaseHttpResponse : IHttpResponse {
+    var data: ArrayList<Any>? = null
+        get() {
+            return field
+        }
+        set(value) {
+            field = value
+        }
+    var errorCode: Int = 0
+    var errorMessage: String = ""
+
+    var httpStatus: Int = 0
+    var code: Int = 0
+    var msg: String = ""
     override fun getMessage(): String {
         return msg;
     }
@@ -22,6 +32,6 @@ class BaseHttpResponse :IHttpResponse {
     }
 
     override fun isResponseOk(): Boolean {
-    return httpStatus==NetCode.STATUS_OK
+        return httpStatus == NetCode.STATUS_OK
     }
 }

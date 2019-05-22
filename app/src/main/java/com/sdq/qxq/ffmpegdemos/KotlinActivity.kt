@@ -10,13 +10,24 @@ import android.support.v4.util.ObjectsCompat
 import android.view.View
 import android.view.Window
 import android.widget.Button
+import com.sdq.qxq.ffmpegdemos.base.BaseActivity
 import com.sdq.qxq.ffmpegdemos.goto
+import com.sdq.qxq.ffmpegdemos.presenter.BasePresenter
+import com.sdq.qxq.ffmpegdemos.presenter.WanandroidPresenter
+import com.sdq.qxq.ffmpegdemos.view.IBaseView
+import com.sdq.qxq.ffmpegdemos.wanandroid.WanAndroidActivity
 import kotlinx.android.synthetic.main.activity_kotlin.*
 import kotlin.math.cos
 import kotlin.math.max
 import kotlin.properties.Delegates
 
-class KotlinActivity : AppCompatActivity() {
+class KotlinActivity : BaseActivity() {
+    lateinit var mWanandroidPresenter:WanandroidPresenter
+    override fun onCratePresenter(): BasePresenter<IBaseView>? {
+        mWanandroidPresenter= WanandroidPresenter()
+        return mWanandroidPresenter
+    }
+
     val ui = Ui() + UiOP.Show + UiOP.TranslateX(20f) + UiOP.TranslateY(20f) + UiOP.Hide
     private lateinit var btnClick: Button
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,6 +72,8 @@ class KotlinActivity : AppCompatActivity() {
         btnOnclick.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 println("点击测试")
+                mWanandroidPresenter.getWanAndroid()
+                WanAndroidActivity.startActivity(getContext() as Activity)
             }
 
         })

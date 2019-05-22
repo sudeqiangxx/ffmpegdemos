@@ -1,5 +1,6 @@
 package com.sdq.qxq.ffmpegdemos;
 
+import android.Manifest;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -8,10 +9,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.sdq.qxq.ffmpegdemos.net.LogUtils;
+import com.tbruyelle.rxpermissions2.RxPermissions;
+
 import java.io.File;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
 import java.util.Objects;
+
+import io.reactivex.functions.Consumer;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,13 +38,26 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        LogUtils.init(true);
         findViewById(R.id.goto_image).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                Intent intent=new Intent(MainActivity.this,CanvasBitmapActivity.class);
 //                startActivity(intent);
-                KotlinActivity.Companion.actionStartActivity(MainActivity.this);
+
+                RxPermissions rxPermissions=new RxPermissions(MainActivity.this);
+                rxPermissions.request(Manifest.permission.READ_EXTERNAL_STORAGE
+                        ,Manifest.permission.WRITE_EXTERNAL_STORAGE
+                        ,Manifest.permission.READ_PHONE_STATE)
+                        .subscribe(new Consumer<Boolean>() {
+                            @Override
+                            public void accept(Boolean aBoolean) throws Exception {
+                                if (aBoolean){
+//                                    fileLengths("/storage/emulated/0/beacon/files/circle/crypt.jpeg","/storage/emulated/0/beacon/files/circle/decrypt.jpeg");
+                                    KotlinActivity.Companion.actionStartActivity(MainActivity.this);
+                                }
+                            }
+                        });
             }
         });
 
@@ -46,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
 //        TextView tv = findViewById(R.id.sample_text);
 //        tv.setText(stringFromJNI());
         stringFromJNI();
-        fileLengths("/storage/emulated/0/beacon/files/circle/crypt.jpeg","/storage/emulated/0/beacon/files/circle/decrypt.jpeg");
         Button play = findViewById(R.id.sample_text);
         final VideoView videoView = findViewById(R.id.videoview);
         play.setOnClickListener(new View.OnClickListener() {
