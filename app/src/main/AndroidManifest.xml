@@ -22,7 +22,9 @@
         android:supportsRtl="true"
         android:name=".WanApplication"
         android:theme="@style/AppTheme">
-        <activity android:name=".wanandroid.WebViewActivity"></activity>
+        <activity android:name=".wanandroid.WebViewActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            />
         <activity android:name=".wanandroid.WanAndroidActivity" />
         <activity android:name=".CanvasBitmapActivity" />
         <activity android:name=".KotlinActivity" />

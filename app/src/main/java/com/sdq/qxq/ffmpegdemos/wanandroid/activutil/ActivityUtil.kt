@@ -13,10 +13,12 @@ import com.sdq.qxq.ffmpegdemos.wanandroid.WebViewActivity
  * @version: 1.0
  */
 object ActivityUtil {
+    /**
+     * 打开网页
+     */
     fun startWebActivity(activity:Activity,url:String){
         var intent=Intent(activity,WebViewActivity::class.java)
         intent.putExtra(IExtras.WEB_URL_KEY,url)
         activity.startActivity(intent)
-
     }
 }

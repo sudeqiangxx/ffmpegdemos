@@ -24,10 +24,6 @@ class WanAndroidActivity : BaseActivity() ,IHomeView{
         mBannerPresenter = BannerPresenter()
         return mBannerPresenter as BasePresenter<IBaseView>
     }
-//    override fun onCratePresenter(): BannerPresenter? {
-//        mBannerPresenter = BannerPresenter()
-//        return mBannerPresenter
-//    }
 
     override fun onResponse(banners: ArrayList<Banner>) {
         banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE)

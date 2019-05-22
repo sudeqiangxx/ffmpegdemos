@@ -1,6 +1,7 @@
 package com.sdq.qxq.ffmpegdemos.wanandroid
 
 import android.content.Context
+import android.graphics.PixelFormat
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.ViewGroup
@@ -15,21 +16,8 @@ class WebViewActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_web_view)
-        val webSettings = webview.getSettings()
-        webview.setBackgroundColor(0)
-        webSettings.setJavaScriptEnabled(true)
-        webSettings.setUseWideViewPort(true)
-        webSettings.setLoadWithOverviewMode(true)
-        webview.setHorizontalScrollbarOverlay(false)
-        webview.webViewClient = WebViewClient()
         var url = intent.extras.getString(IExtras.WEB_URL_KEY)
         webview.loadUrl(url)
     }
-
-    override fun onDestroy() {
-        super.onDestroy()
-
-    }
-
 
 }
