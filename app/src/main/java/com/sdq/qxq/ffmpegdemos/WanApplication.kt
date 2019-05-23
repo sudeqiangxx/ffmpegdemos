@@ -1,6 +1,7 @@
 package com.sdq.qxq.ffmpegdemos
 
 import android.app.Application
+import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper
 import com.sdq.qxq.ffmpegdemos.net.LogUtils
 import com.tencent.smtt.sdk.QbSdk
 import com.tencent.smtt.sdk.TbsDownloader
@@ -16,5 +17,6 @@ class WanApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         AppInitService.start(this)
+        BGASwipeBackHelper.init(this, null);
     }
 }
